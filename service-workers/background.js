@@ -39,6 +39,6 @@ async function refreshPage() {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
-        files: ['content-scripts/pull-request.js']
+        files: ["content-scripts/pull-request.js"]
     });
 }

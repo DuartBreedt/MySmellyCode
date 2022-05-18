@@ -34,12 +34,13 @@
         {
             "matches": [
                 "https://*.github.com/*/pull/*/files",
-                "file:///D:/Dev/github-code-smell/test.html"
+                "file:///D:/Dev/my-smelly-code/test.html"
             ],
             "css": [
                 "content-scripts/violations.css"
             ],
             "js": [
+                "constants.js",
                 "content-scripts/setup.js",
                 "content-scripts/step-through.js",
                 "content-scripts/pull-request.js"
