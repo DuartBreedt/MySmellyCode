@@ -27,6 +27,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     if (activeViolator) {
 
+        const violatorContainer = activeViolator.closest(".file.js-file.js-details-container.js-targetable-element.Details.show-inline-notes.js-tagsearch-file")
+        if(violatorContainer && !violatorContainer.classList.contains('open')) {
+            violatorContainer.classList.add('open', 'Details--on')
+        }
+
         const scrollOffset = getScrollOffset(activeViolator)
         window.scrollTo(0, scrollOffset - STICKY_OFFSET <= 0 ? 0 : scrollOffset - STICKY_OFFSET);
 

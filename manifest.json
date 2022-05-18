@@ -33,7 +33,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://*.github.com/*/pull/*/files",
+                "https://*.github.com/*/pull/*/files*",
                 "file:///D:/Dev/my-smelly-code/test.html"
             ],
             "css": [

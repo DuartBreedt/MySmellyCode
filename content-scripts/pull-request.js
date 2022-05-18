@@ -20,7 +20,7 @@ chrome.storage.sync.get(STORAGE_KEY_KEYWORDS, async ({ keywords }) => {
         // Markup new violations
         for (let a = 0; a < additionValues.length; a++) {
 
-            if (keywords?.containsKeywords && keywords.containsKeywords.length > 0) {
+            if (keywords?.containsKeywords) {
 
                 for (const keyword of keywords.containsKeywords) {
 
@@ -33,7 +33,7 @@ chrome.storage.sync.get(STORAGE_KEY_KEYWORDS, async ({ keywords }) => {
                 }
             }
 
-            if (keywords?.wordsKeywords && keywords.wordsKeywords.length > 0) {
+            if (keywords?.wordsKeywords) {
 
                 for (const keyword of keywords.wordsKeywords) {
 
