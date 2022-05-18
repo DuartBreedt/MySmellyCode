@@ -1,7 +1,6 @@
 # MySmellyCode
 
 ## To Do
-- Contains and full words distinction [High][Medium]
 - Disable/enable (context menu option too) [High][Medium]
 - Next/prev context menu option [High][Medium]
 - Unified view support...? [High][???]
