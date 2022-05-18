@@ -21,7 +21,9 @@ chrome.storage.sync.get(STORAGE_KEY_KEYWORDS, async ({ keywords }) => {
         for (let a = 0; a < additionValues.length; a++) {
 
             if (keywords?.containsKeywords && keywords.containsKeywords.length > 0) {
+
                 for (const keyword of keywords.containsKeywords) {
+
                     if (additionValues[a].includes(keyword)) {
                         additions[a].classList.add(CLASS_VIOLATION);
                         violators.push(additions[a])
@@ -32,9 +34,12 @@ chrome.storage.sync.get(STORAGE_KEY_KEYWORDS, async ({ keywords }) => {
             }
 
             if (keywords?.wordsKeywords && keywords.wordsKeywords.length > 0) {
+
                 for (const keyword of keywords.wordsKeywords) {
-                    // FIXME: This should be a word match
-                    if (additionValues[a].includes(keyword)) {
+
+                    const regex = new RegExp(`(^|[^a-zA-Z])+?(${keyword})+([^a-zA-Z]|$)+?`)
+
+                    if (additionValues[a].search(regex) > -1) {
                         additions[a].classList.add(CLASS_VIOLATION);
                         violators.push(additions[a])
                         count++
