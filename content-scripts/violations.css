@@ -1,0 +1,8 @@
+.blob-code-addition.violation {
+    background-color: rgba(229, 147, 75, 0.4);
+    border-radius: 8px;
+}
+
+.blob-code-addition.violation.active-violation {
+    border: 1px solid rgb(229, 147, 75);
+}

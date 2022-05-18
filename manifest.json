@@ -1,0 +1,49 @@
+{
+    "name": "MySmellyCode",
+    "description": "Detect your own custom set of keywords in Github pull requests",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting",
+        "webRequest"
+    ],
+    "host_permissions": [
+        "https://github.com/*/diffs?*&bytes=*lines=*&pull_number=*&start_entry=*"
+    ],
+    "icons": {
+        "16": "/images/ic_icon.png",
+        "32": "/images/ic_icon.png",
+        "48": "/images/ic_icon.png",
+        "128": "/images/ic_icon.png"
+    },
+    "background": {
+        "service_worker": "service-workers/background.js"
+    },
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": {
+            "16": "/images/ic_icon.png",
+            "32": "/images/ic_icon.png",
+            "48": "/images/ic_icon.png",
+            "128": "/images/ic_icon.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.github.com/*/pull/*/files",
+                "file:///D:/Dev/github-code-smell/test.html"
+            ],
+            "css": [
+                "content-scripts/violations.css"
+            ],
+            "js": [
+                "content-scripts/setup.js",
+                "content-scripts/step-through.js",
+                "content-scripts/pull-request.js"
+            ]
+        }
+    ]
+}
