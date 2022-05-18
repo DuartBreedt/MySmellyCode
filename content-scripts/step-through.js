@@ -1,10 +1,10 @@
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    sendResponse({ status: 'ok' });
+    sendResponse({ status: 'ok' })
 
     if (activeViolator) {
         // Remove styles for the old active violator
-        activeViolator.classList.remove(CLASS_ACTIVE_VIOLATION);
+        activeViolator.classList.remove(CLASS_ACTIVE_VIOLATION)
     }
 
     if (request.action == ACTION_NEXT) {
@@ -27,23 +27,23 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     if (activeViolator) {
 
-        const violatorContainer = activeViolator.closest(".file.js-file.js-details-container.js-targetable-element.Details.show-inline-notes.js-tagsearch-file")
-        if(violatorContainer && !violatorContainer.classList.contains('open')) {
-            violatorContainer.classList.add('open', 'Details--on')
+        const violatorAccordion = activeViolator.closest(SELECTOR_VIOLATOR_ACCORDION)
+        if (violatorAccordion && !violatorAccordion.classList.contains(CLASS_VIOLATOR_ACCORDION_OPEN)) {
+            violatorAccordion.classList.add(CLASS_VIOLATOR_ACCORDION_OPEN, CLASS_VIOLATOR_ACCORDION_DETAILS)
         }
 
         const scrollOffset = getScrollOffset(activeViolator)
-        window.scrollTo(0, scrollOffset - STICKY_OFFSET <= 0 ? 0 : scrollOffset - STICKY_OFFSET);
+        window.scrollTo(0, scrollOffset - STICKY_OFFSET <= 0 ? 0 : scrollOffset - STICKY_OFFSET)
 
         // Add relevant style for the active violator
-        activeViolator.classList.add(CLASS_ACTIVE_VIOLATION);
+        activeViolator.classList.add(CLASS_ACTIVE_VIOLATION)
 
         // Send the current step and max step to the UI
         chrome.runtime.sendMessage({ currentStep, maxStep })
     }
 
     return true
-});
+})
 
 /**
  * Recursively calculate the scroll offset of an element which can be deeply nested.
@@ -52,5 +52,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
  * @returns The scroll offset to the element
  */
 function getScrollOffset(elem) {
-    return elem.offsetParent ? elem.offsetTop + getScrollOffset(elem.offsetParent) : elem.offsetTop;
+    return elem.offsetParent ? elem.offsetTop + getScrollOffset(elem.offsetParent) : elem.offsetTop
 }

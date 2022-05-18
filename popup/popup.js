@@ -15,7 +15,7 @@ for (const accordion of accordions) {
     accordion.addEventListener('click', () => {
         accordion.classList.toggle(CLASS_ACCORDION_ACTIVE)
         var panel = accordion.nextElementSibling
-        panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + 'px'
+        panel.style.maxHeight = panel.style.maxHeight ? null : `${panel.scrollHeight}px`
     })
 }
 
@@ -27,11 +27,11 @@ chrome.storage.sync.get(STORAGE_KEY_KEYWORDS, ({ keywords }) => {
     }
 
     if (keywords?.containsKeywords && keywords.containsKeywords.length > 0) {
-        containsTextBox.value = keywords.containsKeywords.join(", ")
+        containsTextBox.value = keywords.containsKeywords.join(', ')
     }
 
     if (keywords?.wordsKeywords && keywords.wordsKeywords.length > 0) {
-        wordsTextBox.value = keywords.wordsKeywords.join(", ")
+        wordsTextBox.value = keywords.wordsKeywords.join(', ')
     }
 })
 
