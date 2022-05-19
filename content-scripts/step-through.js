@@ -29,9 +29,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         // FIXME: Do this better
         const scrollContainer = VERSION_CONTROL_PROVIDER == "AZURE" ? document.getElementsByClassName("repos-changes-viewer")[0] : window
 
-        const violatorAccordion = activeViolator.closest(SELECTOR_VIOLATOR_ACCORDION)
-        if (violatorAccordion && !violatorAccordion.classList.contains(CLASS_VIOLATOR_ACCORDION_OPEN)) {
-            violatorAccordion.classList.add(CLASS_VIOLATOR_ACCORDION_OPEN, CLASS_VIOLATOR_ACCORDION_DETAILS)
+        // FIXME: Do this better
+        if (VERSION_CONTROL_PROVIDER == "GITHUB") {
+            const violatorAccordion = activeViolator.closest(SELECTOR_VIOLATOR_ACCORDION)
+            if (violatorAccordion && !violatorAccordion.classList.contains(CLASS_VIOLATOR_ACCORDION_OPEN)) {
+                violatorAccordion.classList.add(CLASS_VIOLATOR_ACCORDION_OPEN, CLASS_VIOLATOR_ACCORDION_DETAILS)
+            }
         }
 
         const scrollOffset = getScrollOffset(activeViolator)

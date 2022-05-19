@@ -50,7 +50,7 @@
         },
         {
             "matches": [
-                "https://dev.azure.com/MMTOL/*/pullrequest/*=files"
+                "https://dev.azure.com/MMTOL/*/pullrequest/*=files*"
             ],
             "css": [
                 "content-scripts/azure-violations.css"
