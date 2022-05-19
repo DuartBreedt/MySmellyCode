@@ -96,7 +96,7 @@ function notifyDataChanged() {
     if (!hasConnected) {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             // FIXME: Improve this by making it a regex constant
-            if (tabs[0].url.includes('github.com') || tabs[0].url.includes('test.html')) {
+            if (tabs[0].url.includes('github.com') || tabs[0].url.includes('dev.azure.com') || tabs[0].url.includes('test.html')) {
                 chrome.runtime.connect({ name: 'popup' })
                 hasConnected = true
             }

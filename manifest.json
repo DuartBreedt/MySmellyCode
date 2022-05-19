@@ -10,7 +10,8 @@
         "webRequest"
     ],
     "host_permissions": [
-        "https://github.com/*/diffs?*&bytes=*lines=*&pull_number=*&start_entry=*"
+        "https://github.com/*/diffs?*&bytes=*lines=*&pull_number=*&start_entry=*",
+        "https://dev.azure.com/*/_apis/Contribution/HierarchyQuery/project/*"
     ],
     "icons": {
         "16": "/images/ic_icon.png",
@@ -37,13 +38,29 @@
                 "file:///D:/Dev/my-smelly-code/test.html"
             ],
             "css": [
-                "content-scripts/violations.css"
+                "content-scripts/github-violations.css"
             ],
             "js": [
+                "github-constants.js",
                 "constants.js",
                 "content-scripts/setup.js",
                 "content-scripts/step-through.js",
-                "content-scripts/pull-request.js"
+                "content-scripts/render.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://dev.azure.com/MMTOL/*/pullrequest/*=files"
+            ],
+            "css": [
+                "content-scripts/azure-violations.css"
+            ],
+            "js": [
+                "azure-constants.js",
+                "constants.js",
+                "content-scripts/setup.js",
+                "content-scripts/step-through.js",
+                "content-scripts/render.js"
             ]
         }
     ]

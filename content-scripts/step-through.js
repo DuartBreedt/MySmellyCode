@@ -1,4 +1,3 @@
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     sendResponse({ status: 'ok' })
 
@@ -27,13 +26,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     if (activeViolator) {
 
+        // FIXME: Do this better
+        const scrollContainer = VERSION_CONTROL_PROVIDER == "AZURE" ? document.getElementsByClassName("repos-changes-viewer")[0] : window
+
         const violatorAccordion = activeViolator.closest(SELECTOR_VIOLATOR_ACCORDION)
         if (violatorAccordion && !violatorAccordion.classList.contains(CLASS_VIOLATOR_ACCORDION_OPEN)) {
             violatorAccordion.classList.add(CLASS_VIOLATOR_ACCORDION_OPEN, CLASS_VIOLATOR_ACCORDION_DETAILS)
         }
 
         const scrollOffset = getScrollOffset(activeViolator)
-        window.scrollTo(0, scrollOffset - STICKY_OFFSET <= 0 ? 0 : scrollOffset - STICKY_OFFSET)
+        scrollContainer.scrollTo(0, scrollOffset - STICKY_OFFSET <= 0 ? 0 : scrollOffset - STICKY_OFFSET)
 
         // Add relevant style for the active violator
         activeViolator.classList.add(CLASS_ACTIVE_VIOLATION)

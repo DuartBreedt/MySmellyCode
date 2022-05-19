@@ -1,18 +1,21 @@
-const lazyLoadUrl = 'https://github.com/*/diffs?*&bytes=*lines=*&pull_number=*&start_entry=*'
+const lazyLoadUrls = [
+    'https://github.com/*/diffs?*&bytes=*lines=*&pull_number=*&start_entry=*',
+    'https://dev.azure.com/*/_apis/Contribution/HierarchyQuery/project/*',
+]
 
 if (!chrome.runtime.onMessage.hasListeners()) {
     chrome.runtime.onMessage.addListener(onMessageCallback)
 }
 
 if (!chrome.webRequest.onCompleted.hasListeners()) {
-    chrome.webRequest.onCompleted.addListener(onCompletedCallback, { urls: [lazyLoadUrl] })
+    chrome.webRequest.onCompleted.addListener(onCompletedCallback, { urls: lazyLoadUrls })
 }
 
 if (!chrome.runtime.onConnect.hasListeners()) {
     chrome.runtime.onConnect.addListener(onConnectCallback)
 }
 
-// Violation count for badge indicator from pull-request.js
+// Violation count for badge indicator from render.js
 async function onMessageCallback(request, sender, sendResponse) {
     if (request?.badge == 0 || request?.badge) {
         sendResponse({ status: 'ok' })
@@ -39,6 +42,6 @@ async function refreshPage() {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
-        files: ['content-scripts/pull-request.js']
+        files: ['content-scripts/render.js']
     })
 }
