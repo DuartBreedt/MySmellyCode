@@ -2,6 +2,7 @@
 
 ## Issues
 - Fix refresh being called before setup is called (STORAGE_KEY_KEYWORDS accessed before it is defined in render.js)
+- Windows and tabs that become inactive and then active again loses state and doesn't show the badges.
 
 ## To Do
 - Disable/enable option in UI [High][Easy]
