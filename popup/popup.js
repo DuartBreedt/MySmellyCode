@@ -11,6 +11,7 @@ const accordions = [...document.getElementsByClassName('accordion')]
 let hasConnected = false
 let keywordsData = { containsKeywords: [], wordsKeywords: [] }
 
+// Open keyword accordions
 for (const accordion of accordions) {
     accordion.addEventListener('click', () => {
         accordion.classList.toggle(CLASS_ACCORDION_ACTIVE)
@@ -91,12 +92,11 @@ function setKeywords(containsKeywords, wordsKeywords) {
     chrome.storage.sync.set({ [STORAGE_KEY_KEYWORDS]: keywordsData })
 }
 
+// Connect the popup to be able to detect whether the popup has been dismissed in the background
 function notifyDataChanged() {
-    // Connect the popup to be able to detect whether the popup has been dismissed
     if (!hasConnected) {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            // FIXME: Improve this by making it a regex constant
-            if (tabs[0].url.includes('github.com') || tabs[0].url.includes('dev.azure.com') || tabs[0].url.includes('test.html')) {
+            if (tabs[0].url.search(SUPPORTED_VERSION_CONTROL_PROVIDERS) > -1) {
                 chrome.runtime.connect({ name: 'popup' })
                 hasConnected = true
             }

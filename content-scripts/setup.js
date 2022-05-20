@@ -1,4 +1,4 @@
-let currentStep = 0
-let maxStep = 1
-let activeViolator
-let violators = []
+currentStep = 0
+maxStep = 1
+activeViolator = undefined
+violators = []

@@ -1,13 +1,14 @@
 {
     "name": "MySmellyCode",
-    "description": "Detect your own custom set of keywords in Github pull requests",
+    "description": "Detect your own custom set of keywords in Github or Azure pull requests",
     "version": "1.0",
     "manifest_version": 3,
     "permissions": [
         "storage",
-        "activeTab",
+        "tabs",
         "scripting",
-        "webRequest"
+        "webRequest",
+        "webNavigation"
     ],
     "host_permissions": [
         "https://github.com/*/diffs?*&bytes=*lines=*&pull_number=*&start_entry=*",
@@ -34,33 +35,28 @@
     "content_scripts": [
         {
             "matches": [
-                "https://*.github.com/*/pull/*/files*",
                 "file:///D:/Dev/my-smelly-code/test.html"
+            ],
+            "css": [
+                "content-scripts/github-violations.css"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.github.com/*"
             ],
             "css": [
                 "content-scripts/github-violations.css"
             ],
             "js": [
-                "github-constants.js",
-                "constants.js",
-                "content-scripts/setup.js",
-                "content-scripts/step-through.js",
-                "content-scripts/render.js"
             ]
         },
         {
             "matches": [
-                "https://dev.azure.com/MMTOL/*/pullrequest/*=files*"
+                "https://dev.azure.com/*"
             ],
             "css": [
                 "content-scripts/azure-violations.css"
-            ],
-            "js": [
-                "azure-constants.js",
-                "constants.js",
-                "content-scripts/setup.js",
-                "content-scripts/step-through.js",
-                "content-scripts/render.js"
             ]
         }
     ]

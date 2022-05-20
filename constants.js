@@ -1,7 +1,9 @@
-const CLASS_VIOLATION = 'violation'
-const CLASS_ACTIVE_VIOLATION = 'active-violation'
+CLASS_VIOLATION = 'violation'
+CLASS_ACTIVE_VIOLATION = 'active-violation'
 
-const STORAGE_KEY_KEYWORDS = 'keywords'
+STORAGE_KEY_KEYWORDS = 'keywords'
 
-const ACTION_NEXT = 'next'
-const ACTION_PREV = 'prev'
+ACTION_NEXT = 'next'
+ACTION_PREV = 'prev'
+
+SUPPORTED_VERSION_CONTROL_PROVIDERS = /https:\/\/.*github\.com\/.*\/pull\/.*\/files.*|https:\/\/dev\.azure\.com\/.*\/pullrequest\/.*=files.*|file:\/\/\/.*\/test\.html/

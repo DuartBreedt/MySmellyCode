@@ -1,12 +1,7 @@
 # MySmellyCode
 
 ## Issues
-- Fix notifyDataChanged check by using a regex constant [High][Easy]
-- Re-evaluate when browsing through directories on Azure [High][Easy]
-    - https://stackoverflow.com/questions/49665031/content-script-only-loading-on-reload-refresh
-- Run scripts upon navigation to PR, not only reload [High][Easy]
-    - https://stackoverflow.com/questions/49665031/content-script-only-loading-on-reload-refresh
-- Attend to FIXMEs
+- Fix refresh being called before setup is called (STORAGE_KEY_KEYWORDS accessed before it is defined in render.js)
 
 ## To Do
 - Disable/enable option in UI [High][Easy]
